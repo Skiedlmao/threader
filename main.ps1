@@ -12,7 +12,6 @@ Function Find-SuspendedThreadsInServices {
         } catch {
             continue
         }
-        # Filter for threads in a Wait state with WaitReason = Suspended
         $suspendedThreads = $process.Threads | Where-Object {
             $_.ThreadState -eq [System.Diagnostics.ThreadState]::Wait -and
             $_.WaitReason  -eq [System.Diagnostics.ThreadWaitReason]::Suspended
